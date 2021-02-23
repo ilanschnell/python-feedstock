@@ -11,3 +11,16 @@ index 344e03a..4f241c2 100644
  
  
  # Some more UNIX dependent modules -- off by default, since these
+diff --git a/setup.py b/setup.py
+index bf90600..3608f0e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -903,6 +903,8 @@ class PyBuildExt(build_ext):
+ 
+         # crypt module.
+ 
++        print(lib_dirs)
++        lib_dirs.append('/usr/lib64')
+         if self.compiler.find_library_file(lib_dirs, 'crypt'):
+             libs = ['crypt']
+         else:
