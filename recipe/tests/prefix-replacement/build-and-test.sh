@@ -2,6 +2,9 @@
 
 set -x
 
+# Test aarch64 build
+export LDFLAGS="$LDFLAGS -L/usr/lib64"
+
 ${CC} a.c $(python3-config --cflags) $(python3-config --ldflags) -o ${CONDA_PREFIX}/bin/embedded-python-static
 if ${READELF} -d ${CONDA_PREFIX}/bin/embedded-python-static | rg libpython; then
   echo "ERROR :: Embedded python linked to shared python library. It is expected to link to the static library."

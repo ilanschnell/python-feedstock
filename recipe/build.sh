@@ -89,6 +89,9 @@ if [[ ${HOST} =~ .*darwin.* ]] && [[ -n ${CONDA_BUILD_SYSROOT} ]]; then
   CPPFLAGS="-isysroot ${CONDA_BUILD_SYSROOT} "${CPPFLAGS}
 fi
 
+# Test aarch64 changes.
+LDFLAGS="$LDFLAGS -L/usr/lib64"
+
 # Debian uses -O3 then resets it at the end to -O2 in _sysconfigdata.py
 if [[ ${_OPTIMIZED} = yes ]]; then
   CPPFLAGS=$(echo "${CPPFLAGS}" | sed "s/-O2/-O3/g")
