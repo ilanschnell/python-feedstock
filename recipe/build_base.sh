@@ -1,6 +1,9 @@
 #!/bin/bash
 set -ex
 
+# Test aarch64 changes.
+LDFLAGS="$LDFLAGS -L/usr/lib64"
+
 # Get an updated config.sub and config.guess
 cp $BUILD_PREFIX/share/libtool/build-aux/config.* .
 
